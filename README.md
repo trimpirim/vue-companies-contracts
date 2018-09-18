@@ -1,26 +1,30 @@
-# Front end developer test case  
+# Front end developer coding assessment
 
-## Test assignment description  
+## Coding assessment description  
   
 You've received an API access to the `Companies` and `Contracts` micro-services.   
 Both of them are completely independent from each other.  
   
-###You have to:
+###You are asked to:
 
-1. Create a small frontend application with access to these micro-services where user should be 
-able to view all companies, see selling contracts inside with clients names included. See interface example [here](#markdown-header-example-user-interface). 
-URL structure should be organized like this: 
+1. Create a small web SPA (Single Page Application) that consumes prebuilt micro services 
+(see interface example [here](#markdown-header-example-user-interface)), 
+where user will be able to: 
+    * View the list of all companies
+    * View the list of all sales contracts related to the single company.
+2. Organize application routing in the following way: 
     * / -- any 'hello world' home page with a link to the companies page
     * /companies -- page with companies and contracts list 
-2. Perform a code review of the provided api access classes (they are in `services` folder) with detailed and structured result  
-3. Propose an API improvement if you'll have any
+3. Perform a code review of the provided api access classes (they are in `services` folder) with detailed and structured result  
+4. Feel free to offer your suggestions related to existing API
 
-###What we're expecting:
+###What we expect from you:
 
-1. Don't spend more than 1 workday to solve this task
-2. Demonstrate your most readable and clean code
-3. Demonstrate your design skills (SOLID, KISS, DRY etc.)
-4. Place code in a bitbucket private repository and send an invite to alex@demins.com
+1. Don't spend too much time (>1 workday) solving this task
+2. Solve this task with scalability in mind. What if number of companies or contracts will be 10000 or 100000?
+3. Do your best writing clean & maintainable code
+4. Demonstrate your software design’s skills (SOLID, KISS, DRY, etc)
+5. Use DVCS Git, share your code via Bitbucket private repo (send invitation link to alex@demins.com)
 
 ###Bonus points:
 
@@ -85,7 +89,7 @@ It will be perfect if you'll place your project inside docker
 |`valid_till`|`string`|contract signing date formatted as 'yyyy-mm-dd'  
   
 ##API Reference  
-###Futures and limitations  
+###Features and limitations  
 1. All query results containing multiple rows are always paginated   
 2. Maximum page size is 5 elements  
 3. Every method returns a Promise  
