@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+    vue:
+        volumes:
+            - vue-companies:/var/www/app
+volumes:
+  vue-companies:
+    external: true

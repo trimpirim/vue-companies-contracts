@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+    vue:
+        build:
+            context: './docker/vue'
+        volumes:
+            - ${SYNC_APP_PATH}:/var/www/app
+        ports:
+            - "9000:9000"
+        container_name: vue
+        command: tail -f /dev/null #to keep the container alive. 
