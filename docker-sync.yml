@@ -1,4 +1,4 @@
 version: '2'
 syncs:
-  vue-companies:
+  app:
     src: ${SYNC_APP_PATH}

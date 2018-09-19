@@ -4,9 +4,11 @@ services:
     vue:
         build:
             context: './docker/vue'
+            args:
+                APP_PORT: ${APP_PORT}
         volumes:
             - ${SYNC_APP_PATH}:/var/www/app
         ports:
-            - "9000:9000"
+            - "${APP_PORT}:${APP_PORT}"
         container_name: vue
-        command: tail -f /dev/null #to keep the container alive. 
+        command: tail -f /dev/null #to keep the container alive.

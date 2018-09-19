@@ -1,5 +1,9 @@
 FROM node
 
+ARG APP_PORT
+
+EXPOSE $APP_PORT
+
 RUN apt-get update && apt-get install -y \
     apt-transport-https \
     openssl \
@@ -11,5 +15,5 @@ RUN apt-get update && apt-get install -y \
 #
 #RUN apt-get update && apt-get install -y \
 #    yarn
-EXPOSE 9000
+EXPOSE $APP_PORT
 WORKDIR /var/www/app
