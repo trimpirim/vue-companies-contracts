@@ -10,5 +10,5 @@ services:
             - ${SYNC_APP_PATH}:/var/www/app
         ports:
             - "${APP_PORT}:${APP_PORT}"
-        container_name: vue
-        command: tail -f /dev/null #to keep the container alive.
+#        command: tail -f /dev/null #to keep the container alive.
+        command: yarn run dev

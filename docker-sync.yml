@@ -1,4 +1,11 @@
 version: '2'
+
+options:
+  max_attempt: 20
+
 syncs:
   app:
     src: ${SYNC_APP_PATH}
+    sync_excludes: ['.docker-sync/daemon.log', '.docker-sync/daemon.log']
+    sync_excludes_type: 'Path'
+    notify_terminal: true
