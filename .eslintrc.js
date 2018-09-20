@@ -41,6 +41,7 @@ module.exports = {
       ]
     }],
     'indent': 0,
+    'no-console': 0,
     // allow optionalDependencies
     'import/no-extraneous-dependencies': ['error', {
       optionalDependencies: ['test/unit/index.js']

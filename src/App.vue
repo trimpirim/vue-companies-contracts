@@ -1,23 +1,43 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
-  </div>
+  <el-container>
+    <el-header>
+      <Header></Header>
+    </el-header>
+    <el-main>
+      <router-view/>
+    </el-main>
+    <el-footer></el-footer>
+  </el-container>
 </template>
 
 <script>
-export default {
-  name: 'App',
-};
+
+  import Header from '@/components/header/Header';
+
+  export default {
+    name: 'App',
+    components: {
+      Header,
+    },
+  };
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="scss">
+  .el-main {
+    background-color: #E9EEF3;
+    color: #333;
+    text-align: center;
+    line-height: 160px;
+  }
+
+  .el-header, .el-footer {
+    background-color: #B3C0D1;
+    color: #333;
+    text-align: center;
+    line-height: 60px;
+  }
+
+  .el-table th {
+    line-height: 23px;
+  }
 </style>
