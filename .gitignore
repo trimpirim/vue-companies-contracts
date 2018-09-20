@@ -1,11 +1,10 @@
-.idea
-.env
 .docker-sync
 .DS_Store
 node_modules
 /dist
 
 # local env files
+.env
 .env.local
 .env.*.local
 
@@ -22,4 +21,3 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw*
->>>>>>> c453e08b45627addf4d99423278df7a687066308
