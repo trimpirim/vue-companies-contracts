@@ -2,15 +2,15 @@
   <div>
     <el-table
       :data="items"
-      style="width: 100%" row-key="id" ref="table" @row-click="onRowClick">
+      style="width: 100%" row-key="id" ref="table" @row-click="onRowClick" empty-text="No results">
       <el-table-column type="expand">
         <template slot-scope="props">
           <Contracts :company="expandedRow"></Contracts>
         </template>
       </el-table-column>
       <el-table-column :width="100"
-        label="ID"
-        prop="id" align="left">
+                       label="ID"
+                       prop="id" align="left">
       </el-table-column>
       <el-table-column
         label="Name"
@@ -39,8 +39,7 @@
       }),
     },
     data() {
-      return {
-      };
+      return {};
     },
     methods: {
       ...mapActions({
@@ -48,6 +47,12 @@
         selectCompany: 'select',
         updatePaginationPage: 'updatePaginationPage',
       }),
+      /**
+       * I did not want to use default @change-expand event,
+       * because I wanted to hide all the other ones
+       * while keeping expanded the clicked one.
+       * @param row
+       */
       onRowClick(row) {
         this.selectCompany(null);
         this.collapseAll(this.items);

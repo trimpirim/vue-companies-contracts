@@ -23,12 +23,26 @@ const mutations = {
 };
 
 const actions = {
+  /**
+   * Loads all contracts by company
+   *
+   * @param state
+   * @param commit
+   * @param id
+   * @returns {Promise<void>}
+   */
   async loadAllByCompany({ state, commit }, id) {
     const { data, meta } = await loadAllByCompany(id, state.pagination);
     commit(MUTATION_TYPES.UPDATE_CONTRACTS_LIST, data);
     commit(MUTATION_TYPES.UPDATE_PAGINATION, meta);
   },
   ...paginationActions(MUTATION_TYPES),
+  /**
+   * Updates contract
+   * @param dispatch
+   * @param contract
+   * @returns {Promise<void>}
+   */
   async updateContract({ dispatch }, contract) {
     await updateContract(contract);
     dispatch('loadAllByCompany', contract.cid);

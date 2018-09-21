@@ -42,7 +42,6 @@ export default class Resource {
      * @returns {Promise}
      */
     getBatch(field, values, page = 0, perPage = 5, orderBy = 'id') {
-      console.log('field', field, values, page, perPage, orderBy);
         return this._promise(
             this._paginate(
                 this._orderBy(

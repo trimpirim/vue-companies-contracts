@@ -2,10 +2,10 @@
   <div>
     <el-table
       :data="items"
-      style="width: 100%" row-key="id" @row-click="onRowClick">
+      style="width: 100%" row-key="id" @row-click="onRowClick" empty-text="No results">
       <el-table-column
-                       label="ID"
-                       prop="id" align="left">
+        label="ID"
+        prop="id" align="left">
       </el-table-column>
       <el-table-column
         label="CID"
@@ -63,6 +63,12 @@
     },
     data() {
       return {
+        /**
+         * There is no need to have this object inside of store.
+         * This is a contract, that will be edited,
+         * so once the modal closes - I am just nulling this one.
+         * Handleing that kind of state in a component, I think, is more than enough.
+         */
         editableContract: null,
       };
     },
