@@ -37,7 +37,19 @@
     line-height: 60px;
   }
 
-  .el-table th {
-    line-height: 23px;
+  .el-table {
+    th {
+      line-height: 23px;
+    }
+
+    .el-pager {
+      display: block;
+      line-height: 23px;
+    }
+  }
+
+  .el-pagination {
+    display: flex;
+    justify-content: flex-end;
   }
 </style>

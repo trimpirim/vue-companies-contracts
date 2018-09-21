@@ -3,7 +3,7 @@ export default class Resource {
      * @param data {Object[]}
      */
     constructor(data) {
-        this.data = data
+        this.data = data;
     }
 
     /**
@@ -24,11 +24,11 @@ export default class Resource {
         return new Promise((resolve, reject) => {
             setTimeout(() => {
                 if (filtered.length === 0) {
-                    reject("not found")
+                    reject('not found');
                 } else {
-                    resolve(this._clone(filtered[0]))
+                    resolve(this._clone(filtered[0]));
                 }
-            }, 100)
+            }, 100);
         });
     }
 
@@ -42,14 +42,15 @@ export default class Resource {
      * @returns {Promise}
      */
     getBatch(field, values, page = 0, perPage = 5, orderBy = 'id') {
+      console.log('field', field, values, page, perPage, orderBy);
         return this._promise(
             this._paginate(
                 this._orderBy(
                     this.data.filter(el => values.indexOf(el[field]) !== -1),
-                    orderBy
+                    orderBy,
                 ),
-                page, perPage
-            )
+                page, perPage,
+            ),
         );
     }
 
@@ -63,8 +64,8 @@ export default class Resource {
     list(page = 0, perPage = 5, orderBy = 'id') {
         return this._promise(
             this._paginate(
-                this._orderBy(this.data, orderBy), page, perPage
-            )
+                this._orderBy(this.data, orderBy), page, perPage,
+            ),
         );
     }
 
@@ -80,14 +81,14 @@ export default class Resource {
                 for (let i = 0; i < this.data.length; i++) {
                     if (this.data[i].id === object.id) {
                         idx = i;
-                        break
+                        break;
                     }
                 }
                 if (idx === -1) {
-                    reject("not found")
+                    reject('not found');
                 } else {
                     this.data[idx] = object;
-                    resolve(object)
+                    resolve(object);
                 }
             }, 200);
         });
@@ -108,11 +109,11 @@ export default class Resource {
         return {
             data: result,
             meta: {
-                total:    arr.length,
-                page:     page,
+                total: arr.length,
+                page,
                 per_page: perPage,
-                items:    result.length
-            }
+                items: result.length,
+            },
         };
     }
 
@@ -127,8 +128,8 @@ export default class Resource {
         return arr.sort((a, b) => {
             if (a[attr] < b[attr]) return -1;
             if (a[attr] > b[attr]) return 1;
-            return 0
-        })
+            return 0;
+        });
     }
 
     /**
@@ -149,11 +150,11 @@ export default class Resource {
      * @private
      */
     _cloneAll(arr) {
-        let cloned = [];
+        const cloned = [];
         for (let i = 0; i < arr.length; i++) {
-            cloned.push(this._clone(arr[i]))
+            cloned.push(this._clone(arr[i]));
         }
-        return cloned
+        return cloned;
     }
 
     /**
