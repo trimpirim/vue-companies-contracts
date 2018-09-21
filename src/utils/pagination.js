@@ -2,7 +2,7 @@
 export const INITIAL_PAGINATION_STATE = {
   total: 0,
   page: 0,
-  perPage: 1,
+  perPage: 5,
   items: 0,
 };
 
