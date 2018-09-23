@@ -2,7 +2,7 @@ import { Contracts } from '../../services/resources';
 
 const ContractsResource = new Contracts();
 
-export const COMPANY_ID_FIELD = 'cid';
+export const SELER_COMPANY_ID_FIELD = 'sid';
 
 /**
  * Loads and parses all contracts by company.
@@ -13,9 +13,9 @@ export const COMPANY_ID_FIELD = 'cid';
  * @returns {Promise<any>}
  */
 // eslint-disable-next-line
-export const loadAllByCompany = (id, {page, perPage, orderBy}) => new Promise((resolve, reject) => {
+export const loadAllBySellerCompany = (id, {page, perPage, orderBy}) => new Promise((resolve, reject) => {
   return ContractsResource
-    .getBatch(COMPANY_ID_FIELD, [id], page, perPage, orderBy)
+    .getBatch(SELER_COMPANY_ID_FIELD, [id], page, perPage, orderBy)
     .then(({ data, meta }) => {
       resolve({
         data: data.map(contract =>

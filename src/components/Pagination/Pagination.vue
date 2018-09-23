@@ -22,7 +22,11 @@
     },
     methods: {
       onPageChange(page) {
-        this.$emit(PAGE_CHANGE_EVENT_NAME, { page });
+        /**
+         * API pagination implementation is zero-based,
+         * el-ui-pagination implementation begins with 1 for a first page.
+         */
+        this.$emit(PAGE_CHANGE_EVENT_NAME, { page: page - 1 });
       },
     },
   };

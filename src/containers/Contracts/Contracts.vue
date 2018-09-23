@@ -8,16 +8,15 @@
         prop="id" align="left">
       </el-table-column>
       <el-table-column
-        label="CID"
-        prop="cid" align="left">
+        label="Client name"
+        align="left">
+        <template slot-scope="scope">
+          <span>{{ scope.row.client.name }}</span>
+        </template>
       </el-table-column>
       <el-table-column
         label="Number"
         prop="number" align="left">
-      </el-table-column>
-      <el-table-column
-        label="SID"
-        prop="sid" align="left">
       </el-table-column>
       <el-table-column
         label="Signed at"
@@ -80,7 +79,7 @@
       ]),
       onPageChange({ page }) {
         this.updatePaginationPage(page);
-        this.loadAllByCompany(this.company.id);
+        this.loadAllByCompany(this.company);
       },
       onRowClick(row) {
         this.editableContract = row;
@@ -94,13 +93,13 @@
       },
     },
     mounted() {
-      this.loadAllByCompany(this.company.id);
+      this.loadAllByCompany(this.company);
     },
     created() {
     },
     watch: {
       company(val) {
-        this.loadAllByCompany(val.id);
+        this.loadAllByCompany(val);
       },
     },
   };

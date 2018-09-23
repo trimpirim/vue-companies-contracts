@@ -2,10 +2,15 @@
   <div>
     <el-table
       :data="items"
-      style="width: 100%" row-key="id" ref="table" @row-click="onRowClick" empty-text="No results">
+      style="width: 100%"
+      row-key="id"
+      ref="table"
+      @expand-change="onExpandChange"
+      @row-click="onRowClick"
+      empty-text="No results">
       <el-table-column type="expand">
         <template slot-scope="props">
-          <Contracts :company="expandedRow"></Contracts>
+          <Contracts v-if="expandedRow" :company="props.row"></Contracts>
         </template>
       </el-table-column>
       <el-table-column :width="100"
@@ -27,6 +32,7 @@
   import Pagination from '../../components/Pagination/Pagination';
 
   const { mapState, mapActions } = createNamespacedHelpers('companies');
+  const { mapActions: mapContractActions } = createNamespacedHelpers('contracts');
 
   export default {
     name: 'Companies',
@@ -47,16 +53,34 @@
         selectCompany: 'select',
         updatePaginationPage: 'updatePaginationPage',
       }),
+      ...mapContractActions({
+        resetContracts: 'reset',
+      }),
       /**
-       * I did not want to use default @change-expand event,
-       * because I wanted to hide all the other ones
-       * while keeping expanded the clicked one.
        * @param row
        */
       onRowClick(row) {
-        this.selectCompany(null);
-        this.collapseAll(this.items);
+        this.handleCompanySelection(row);
         this.$refs.table.toggleRowExpansion(row, true);
+      },
+      /**
+       * onRowClick and onExpandChange is needed to handle whole row clicks
+       * and to handle arrow clicks specifically.
+       * Both methods have almost the same implementation, but differs.
+       *
+       * @param row
+       * @param expandedRows
+       * @param expanded
+       */
+      onExpandChange(row, expandedRows, expanded) {
+        if (expanded) {
+          this.handleCompanySelection(row);
+        }
+      },
+      handleCompanySelection(row) {
+        this.resetContracts();
+        this.selectCompany(null);
+        this.collapseAll(this.items.filter(item => item.id !== row.id));
         this.selectCompany(row);
       },
       collapseAll(rows) {
@@ -78,5 +102,6 @@
   };
 </script>
 
-<style>
+<style lang="scss">
+
 </style>

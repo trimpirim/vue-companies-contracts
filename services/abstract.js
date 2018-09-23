@@ -1,3 +1,15 @@
+/**
+ * 1. I do not like and discourage the usage of '_' to show the visibility of the method or property;
+ * Most of the ES, JS lints are not encouraging this practice too. You will still be able to
+ * use those methods even thought that you are not sure what side-effects they might have;
+ * 2. Rejects should reject with a specific code to indicate, what message should FE use.
+ * BE should not return human-readable error message, the application that uses that API should;
+ * 3. `indexOf` -> `includes`;
+ * 4. You have defined your own `_promise` method, but you are not using that one everywhere you can;
+ * 5. `update` method uses `for` loop, while you could simply use `findIndex`;
+ * 6. `orderBy` -> `sort(() => a[attr] - b[attr])`;
+ * 7. `per_page` -> `perPage`;
+ */
 export default class Resource {
     /**
      * @param data {Object[]}

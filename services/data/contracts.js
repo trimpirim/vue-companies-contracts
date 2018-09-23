@@ -1,3 +1,8 @@
+/**
+ * 1. sid, cid is not self-explanatory, would rename those into client_id and seller_id;
+ * 2. Unless you are doing ROR or Python, there is no point to have snake_case instead of camelCase for property names.
+ *    Even if you are using ROR or Python, I would still try to use something that FE or Swift, or Kotlin would use.
+ */
 export default [
     {id: 1, sid: 1, cid: 2, number: "AM-1", signed_at: "2017-03-26", valid_till: "2018-03-26"},
     {id: 2, sid: 1, cid: 2, number: "KZ-NJ-13", signed_at: "2014-01-32", valid_till: "2019-01-32"},

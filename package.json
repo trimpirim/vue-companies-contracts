@@ -13,8 +13,9 @@
     "build": "node build/build.js"
   },
   "dependencies": {
-    "element-ui": "^2.4.7",
+    "element-ui": "trimpirim/element#master",
     "node-sass": "^4.9.3",
+    "postcss-salad": "^2.0.1",
     "sass-loader": "^7.1.0",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
