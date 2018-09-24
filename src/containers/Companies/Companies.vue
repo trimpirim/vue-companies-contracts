@@ -60,8 +60,8 @@
        * @param row
        */
       onRowClick(row) {
-        this.handleCompanySelection(row);
-        this.$refs.table.toggleRowExpansion(row, true);
+        const shouldExpand = this.expandedRow === null || (this.expandedRow.id !== row.id);
+        this.$refs.table.toggleRowExpansion(row, shouldExpand);
       },
       /**
        * onRowClick and onExpandChange is needed to handle whole row clicks
@@ -73,13 +73,13 @@
        * @param expanded
        */
       onExpandChange(row, expandedRows, expanded) {
+        this.selectCompany(null);
         if (expanded) {
           this.handleCompanySelection(row);
         }
       },
       handleCompanySelection(row) {
         this.resetContracts();
-        this.selectCompany(null);
         this.collapseAll(this.items.filter(item => item.id !== row.id));
         this.selectCompany(row);
       },
